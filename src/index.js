@@ -160,7 +160,7 @@ export default function commonjs ( options = {} ) {
 				else if (esModulesWithoutDefaultExport.indexOf(actualId) !== -1)
 					return `import * as ${name} from ${JSON.stringify( actualId )}; export default ${name};`;
 				else
-					return `import * as ${name} from ${JSON.stringify( actualId )}; export default ( ${name} && ${name}['default'] ) || ${name};`;
+					return `import * as ${name} from ${JSON.stringify( actualId )}; export default ${name};`; // HACK: TO FIX https://github.com/rollup/rollup/issues/1859 https://github.com/rollup/rollup-plugin-commonjs/issues/308
 			}
 		},
 
